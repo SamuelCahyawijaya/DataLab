@@ -63,7 +63,7 @@ class NusaXConfig(datalabs.BuilderConfig):
           **kwargs: keyword arguments forwarded to super.
         """
         super(NusaXConfig, self).__init__(**kwargs)
-        
+
 def nusax_config_constructor(lang_source, lang_target, version="1.0.0"):
     """Construct NusaXaConfig with nusax_mt_{lang_source}_{lang_target} as the name format"""
     return NusaXConfig(
@@ -107,7 +107,7 @@ class NusaXMT(datalabs.GeneratorBasedBuilder):
                 },
             }
         )
-        
+
         return datalabs.DatasetInfo(
             description=_DESCRIPTION,
             citation=_CITATION,
@@ -147,7 +147,7 @@ class NusaXMT(datalabs.GeneratorBasedBuilder):
     def _generate_examples(self, filepath) -> Tuple[int, Dict]:
         df = pd.read_csv(filepath).reset_index()
         lang_src, lang_tgt = self.config.name.split('-')[-2:]
-        
+
         for index, row in df.iterrows():
             ex = {
                 'translation':{
